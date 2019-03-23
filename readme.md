@@ -5,9 +5,6 @@
 * Cat.M1 장치의 TCP 데이터 송수신, SMS, GPS, SKT Thingplug 서비스 연동 등에 대한 **가이드 문서**
 * [Arduino IDE][link-arduino-compiler] 상에서 동작하는 **예제 코드**
 
-
-## Overview
-
 ![][hw-stack-arduinomega]
 
 ## Folder Structure
@@ -28,7 +25,7 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 
 ### Common Docs
 |        Title       |         Doc        |                            Description                           |
-|:------------------:|:------------------:|:----------------------------------------------------------------:|
+|:------------------:|:------------------:|:----------------------------------------------------------------|
 | [Quickstart Guide](https://github.com/Wiznet/wiznet-iot-shield-kr/blob/master/docs/quickstartguide_standalone_mode.md) | :heavy_check_mark: | Standalone 모드를 활용한 Cat.M1 모듈 테스트 |
 | [Hardware Guide](https://github.com/Wiznet/wiznet-iot-shield-hardware-kr/blob/master/docs/wiot_hw_overview_n_settings.md) | :heavy_check_mark: | WIoT 제품군의 하드웨어 구성 및 설정 가이드 |
 | [SKT Thingplug Guide](https://github.com/Wiznet/wiznet-iot-shield-kr/blob/master/docs/thingplug_guide_common.md) | :heavy_check_mark: | Cat.M1 장치의 SKT Thingplug 연동 가이드 (공통)  |
@@ -36,10 +33,12 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 
 ### Arduino Cat.M1 Samples and Docs
 
+> * [QC] WIoT-QC01 예제 코드
+> * [WM] WIoT-WM01 예제 코드
+> * [AM] WIoT-AM01 예제 코드
 
-
-|        Title       |         Doc        |      BG96 code     |      WM-N400MSE code     |       AMM5918K code      |                            Description                           |
-|:------------------:|:------------------:|:------------------:|:------------------------:|:------------------------:|:----------------------------------------------------------------:|
+|        Title       |         Doc        |      QC     |      WM     |       AM      |                            Description                           |
+|:------------------:|:------------------:|:------------------:|:------------------------:|:------------------------:|:----------------------------------------------------------------|
 | 개발 시작 가이드   | :heavy_check_mark: | :heavy_minus_sign: |    :heavy_minus_sign:    |  :heavy_minus_sign:    | 초기 개발환경 구축                                               |
 | Ping 테스트        | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark:    | :heavy_multiplication_x:    | 네트워크 상의 지정된 목적지와 Ping 테스트 예제                   |
 | TCP/IP 구현하기 | :heavy_check_mark: | :heavy_check_mark: |  :heavy_multiplication_x:  | :heavy_multiplication_x:    | TCP client로 동작하여 데이터 송신 및 수신하는 예제               |
