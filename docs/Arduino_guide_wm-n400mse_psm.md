@@ -64,10 +64,10 @@ PSM을 사용하기 위해 **AT+CPSMS** 명령어를 사용하며, 파라미터 
 | Parameter | Type | Description |
 |:--------|:--------|:--------|
 | (Mode) | Integer | 0 : PSM 해제<br>1 : PSM 설정<br>2 : PSM 해제 및 설정 초기화|
-| (Requested_Periodic-RAU) | Integer | 000□□□□□ : (6-8 bits: 10분)   \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 10시간)  \* (1-5 bits: 이진수 값)<br>011□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>100□□□□□ : (6-8 bits: 30초)    \* (1-5 bits: 이진수 값)<br>101□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>110□□□□□ : (6-8 bits: 320시간) \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
-| (Requested_GPRS-READY-time) | Integer | 000□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
-| (Requested_Periodic-TAU) | Integer | 000□□□□□ : (6-8 bits: 10분)   \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 10시간)  \* (1-5 bits: 이진수 값)<br>011□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>100□□□□□ : (6-8 bits: 30초)    \* (1-5 bits: 이진수 값)<br>101□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>110□□□□□ : (6-8 bits: 320시간) \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
-| (Requested_Active-Time) | Integer | 000□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
+| (Requested_Periodic-RAU) | String | 000□□□□□ : (6-8 bits: 10분)   \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 10시간)  \* (1-5 bits: 이진수 값)<br>011□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>100□□□□□ : (6-8 bits: 30초)    \* (1-5 bits: 이진수 값)<br>101□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>110□□□□□ : (6-8 bits: 320시간) \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
+| (Requested_GPRS-READY-time) | String | 000□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
+| (Requested_Periodic-TAU) | String | 000□□□□□ : (6-8 bits: 10분)   \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 10시간)  \* (1-5 bits: 이진수 값)<br>011□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>100□□□□□ : (6-8 bits: 30초)    \* (1-5 bits: 이진수 값)<br>101□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>110□□□□□ : (6-8 bits: 320시간) \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
+| (Requested_Active-Time) | String | 000□□□□□ : (6-8 bits: 2초)     \* (1-5 bits: 이진수 값)<br>001□□□□□ : (6-8 bits: 1분)     \* (1-5 bits: 이진수 값)<br>010□□□□□ : (6-8 bits: 1시간)   \* (1-5 bits: 이진수 값)<br>111□□□□□ : 미설정<br> |
 
 ### 2. 모듈 및 모뎀 상태 조회
 **AT$$DBS** 명령의 응답 중, (PSM-ACTIVE), (PSM-PERIODIC) 파라미터 값으로  Active/Sleep 시간을 계산할 수 있습니다.
