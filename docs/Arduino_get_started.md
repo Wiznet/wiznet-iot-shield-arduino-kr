@@ -130,6 +130,8 @@ WIZnet IoT Shield와 Arduino Mega2560과 Uart 통신을 하기위해서는 아�
 ![][10]
 
 
+## 축하합니다
+이제 여러분은 Arduino 보드 기반에서 WIZnet IoT Shield를 활용하여 LTE Cat.M1 응용을 개발할 모든 준비를 마쳤습니다!
 
 <a name="ReadMore"></a>
 ## 더 보기
@@ -152,7 +154,6 @@ WIZnet IoT Shield와 Arduino Mega2560과 Uart 통신을 하기위해서는 아�
 [hw-settings-nucleo-qc01]: ./imgs/hw/WIoT-QC01_JUMP_Arduino_serialD2_D8.png
 [hw-settings-nucleo-wm01]: ./imgs/hw/WIoT-WM01_JUMP_Arduino_serialD2_D8.png
 [hw-settings-nucleo-am01]: ./imgs/hw/WIoT-AM01_JUMP_Arduino_serialD2_D8.png
-
 
 [1]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png
 [2]: ./imgs/
