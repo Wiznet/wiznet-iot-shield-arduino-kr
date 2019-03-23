@@ -26,7 +26,7 @@
 이 문서를 따라하기 전에 다음과 같은 것들이 준비되어야 합니다.
 
 - **Arduino IDE 개발환경을 활용 할 수 있는 컴퓨터**
-  - 프로그래밍 및 디버깅을 위한 IDE 프로그램 ([Arduino IDE][link-arduino-compiler]) 수정 필요
+  - 프로그래밍 및 디버깅을 위한 IDE 프로그램 ([Arduino IDE][link-arduino-compiler])
 
 - **Cat.M1 디바이스 개발용 하드웨어**
   - [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3]
