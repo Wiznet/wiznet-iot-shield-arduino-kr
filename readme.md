@@ -47,7 +47,7 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 | GPS 활용하기       | :heavy_check_mark: | :heavy_check_mark: |  :heavy_multiplication_x:    | :heavy_multiplication_x:    | Cat.M1 모듈에 내장된 GPS 위치 측위 예제                          |
 | SMS 활용하기       | :heavy_check_mark: | :heavy_check_mark: |  :heavy_multiplication_x:  | :heavy_multiplication_x: | Cat.M1 모듈에서 지원하는 SMS(단문 메시지 서비스)의 활용 예제     |
 | PSM 저전력 모드    | :heavy_check_mark: | :heavy_check_mark: |    :heavy_check_mark:    | :heavy_multiplication_x: | Cat.M1 모듈에서 지원하는 저전력 모드(PSM) 활용 예제              |
-| ThingPlug 활용 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | SKT의 클라우드 서비스인 ThingPlug 연동 예제와 Widget 활용 가이드 |
+| ThingPlug 활용 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | SKT의 클라우드 서비스 ThingPlug 연동 예제와 Widget 활용 가이드 |
 
 ## Documentation
 개발 시작 가이드 및 응용 가이드 문서는 본 저장소의 **[Wiki](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/wiki/)** 에서 확인 할 수 있습니다.
