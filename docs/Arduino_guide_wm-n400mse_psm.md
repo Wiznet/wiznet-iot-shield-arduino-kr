@@ -157,7 +157,7 @@ OK
 ```
 
 
-Active/Sleep 상태는 **AT$$MSTIME?** 명령어를 이용하여 현재 시간을 받아오는 것으로 확인 하였습니다. 아래의 테스트는 PSM-ACTIVE을 60s, PSM-PERIODIC을 180s로 설정하여 테스트한 결과 입니다. **AT$$MSTIME?**의 응답으로서 현재 시간을 받는 시점을 Active Start로 표기하였고, 현재 시간을 받지 못하는 시점을 Sleep Start로 표기하였습니다. 
+Active/Sleep 상태는 **AT$$MSTIME?** 명령어를 이용하여 현재 시간을 받아오는 것으로 확인 하였습니다. 아래의 테스트는 PSM-ACTIVE을 60s, PSM-PERIODIC을 180s로 설정하여 테스트한 결과 입니다. **AT$$MSTIME?** 의 응답으로서 현재 시간을 받는 시점을 Active Start로 표기하였고, 현재 시간을 받지 못하는 시점을 Sleep Start로 표기하였습니다. 
 
 ```
 [WM-N400MSE] Current Time: 16h 24m 9s
