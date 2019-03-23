@@ -46,7 +46,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Write | ATE(value) | OK | ATE0<br>OK |
 
@@ -62,7 +62,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Read | AT$$STAT? | $$STAT:(status)<br><br>OK | AT$$STAT?<br>$$STAT:READY<br><br>OK |
 
@@ -78,7 +78,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Read | AT$$CEREG? | $$STAT:(value),(status)<br><br>OK | AT+CEREG?<br>+CEREG:0,1<br><br>OK |
 
@@ -97,7 +97,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Write  | AT*RNDISDATA=(value1) | *RNDISDATA:(value1)<br><br>OK | AT\*RNDISDATA=1<br>*RNDISDATA: 1<br><br>OK |
 
@@ -114,7 +114,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Write | AT*PING=(Host),(Count) | OK | AT*PING=8.8.8.8,2<br>OK<br>PING 64:ff9b::8.8.8.8(64:ff9b::808:808) 56 data bytes<br>64 bytes from 64:ff9b::808:808: icmp_seq=1 ttl=115 time=150 ms<br>64 bytes from 64:ff9b::808:808: icmp_seq=2 ttl=115 time=102 ms<br><br>--- 64:ff9b::8.8.8.8 ping statistics ---<br>2 packets transmitted, 2 received, 0% packet loss, time 1004ms<br>rtt min/avg/max/mdev = 102.291/126.535/150.780/24.247 ms<br>rtt min/avg/max/mdev = 102.291/126.535/150.780/24.247 ms<br>AT+WSOCR=1,www.kma.go.kr,80,1,0<br>+WSOCR:1,1,64:ff9b::794e:2229/80,TCP |
 
