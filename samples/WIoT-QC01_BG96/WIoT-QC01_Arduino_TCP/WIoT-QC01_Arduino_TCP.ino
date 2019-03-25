@@ -11,9 +11,9 @@
 #define BG96_APN_PROTOCOL_IPv4             1
 #define BG96_APN_PROTOCOL_IPv6             2
 #define BG96_DEFAULT_TIMEOUT               1000
-#define BG96_CONNECT_TIMEOUT        15000
-#define BG96_SEND_TIMEOUT           500
-#define BG96_RECV_TIMEOUT           500
+#define BG96_CONNECT_TIMEOUT               15000
+#define BG96_SEND_TIMEOUT                  500
+#define BG96_RECV_TIMEOUT                  500
 
 #define BG96_APN_PROTOCOL                  BG96_APN_PROTOCOL_IPv6
 #define WM_N400MSE_DEFAULT_BAUD_RATE       115200
@@ -25,13 +25,14 @@
 #define DEVNAME                             CATM1_DEVICE_NAME_BG96
 
 #define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
-#define MYPRINTF(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("[MAIN] "); Serial.println(x); }
+#define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
 // Sensors
 #define MBED_CONF_IOTSHIELD_SENSOR_CDS     A0
 #define MBED_CONF_IOTSHIELD_SENSOR_TEMP    A1
 
 // Debug message settings
+#define BG96_PARSER_DEBUG                  DEBUG_DISABLE
 #define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
 ATCmdParser m_parser = ATCmdParser(&Serial3);
@@ -42,12 +43,9 @@ int  dest_port = 8000;
 char rxbuf[40];
 
 void setup() {
-  m_parser.debug_on(1);
-
   char buf[30];
-
   char buf2[40];
-  // put your setup code here, to run once:
+
   serialPcInit();
   catm1DeviceInit();
 
@@ -487,7 +485,7 @@ int8_t checkRecvData_BG96(void)
 
   bool received = false;
 
-  sprintf(cmd, "PSM POWER DOWN");
+  sprintf(cmd, "+QIURC: \"recv\",%d", id);
   m_parser.set_timeout(1);
   received = m_parser.recv(cmd);
   m_parser.set_timeout(BG96_DEFAULT_TIMEOUT);

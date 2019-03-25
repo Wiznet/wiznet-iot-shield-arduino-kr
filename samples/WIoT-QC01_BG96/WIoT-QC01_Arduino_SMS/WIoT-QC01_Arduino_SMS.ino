@@ -24,7 +24,7 @@
 #define DEVNAME                             CATM1_DEVICE_NAME_BG96
 
 #define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
-#define MYPRINTF(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("[MAIN] "); Serial.println(x); }
+#define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
 // Sensors
 #define MBED_CONF_IOTSHIELD_SENSOR_CDS     A0
@@ -37,7 +37,7 @@
 #define SMS_EOF                            0x1A
 #define MAX_SMS_SIZE                       100
  
-char phone_number[] = "01090373914";
+char phone_number[] = "010xxxxxxxx";
 char send_message[] = "WIZnet Cat.M1 IoT shield is powered on";
 
 ATCmdParser m_parser = ATCmdParser(&Serial3);
@@ -46,8 +46,7 @@ unsigned long recvTime = 0;
 void setup() {
   char buf[40];
   char buf1[40];
-  
-  // put your setup code here, to run once:
+
   serialPcInit();
   catm1DeviceInit();
 

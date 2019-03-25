@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include "at_cmd_parser.h"
+#include <SimpleTimer.h>
 
 #define RESP_OK                            "OK\r\n"
 #define RET_OK                             1
@@ -21,28 +22,34 @@
 #define DEVNAME                             CATM1_DEVICE_NAME_BG96
 
 #define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
-#define MYPRINTF(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("[MAIN] "); Serial.println(x); }
+#define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
 // Sensors
 #define MBED_CONF_IOTSHIELD_SENSOR_CDS     A0
 #define MBED_CONF_IOTSHIELD_SENSOR_TEMP    A1
 
 // Debug message settings
+#define BG96_PARSER_DEBUG                  DEBUG_DISABLE
 #define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
 #define REQUESTED_PERIODIC_TAU            "10100101"
 #define REQUESTED_ACTIVE_TIME             "00100100"
 
 ATCmdParser m_parser = ATCmdParser(&Serial3);
-char timeBuf[35];
+
+String rxdata;
+int timeCount = 0;
+const char* chr;
+
+SimpleTimer timer;
 
 void setup() {
-
   char buf[30];
   char buf1[40];
-  // put your setup code here, to run once:
+
   serialPcInit();
   catm1DeviceInit();
+  timer.setInterval(1000, printTimerInfo_BG96);
 
   MYPRINTF("Waiting for Cat.M1 Module Ready...\r\n");
 
@@ -73,31 +80,36 @@ void setup() {
 
   setContextActivate_BG96();
 
-  setPSMActivate(REQUESTED_PERIODIC_TAU, REQUESTED_ACTIVE_TIME);
-  moduleReset();
+  setPSMActivate_BG96(REQUESTED_PERIODIC_TAU, REQUESTED_ACTIVE_TIME);
+  catm1DeviceReset_BG96();
+
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
-
-  while (1)
+  if (Serial3.available())
   {
-    if (checkRecvData_BG96() == RET_OK) {
-      Serial.print("Sleep Start: ");
-      getcurrentTime();
-      break;
+    rxdata = Serial3.readString();
+    //Serial.println(rxdata);
+    chr = rxdata.c_str();
+    if ( strstr(chr, "PSM") != NULL )
+    {
+      timeCount = 0;
+      MYPRINTF("Sleep Start");
     }
-    else if (checkRecvData1_BG96() == RET_OK) {
-      Serial.print("Active Start: ");
-      getcurrentTime();
-      break;
+
+    if ( strstr(chr, "RDY") != NULL )
+    {
+      timeCount = 0;
+      MYPRINTF("Active Start");
     }
-    getcurrentTime();
-    delay(1000);
+
   }
+  timer.run();
 }
+
+
 
 
 void serialPcInit(void)
@@ -382,7 +394,7 @@ int8_t getIpAddress_BG96(char * ipstr) // IPv4 or IPv6
 // Functions: Cat.M1 PSM activate / deactivate
 // ----------------------------------------------------------------
 
-void setPSMActivate(char *Requested_Periodic_TAU, char *Requested_Active_Time)
+void setPSMActivate_BG96(char *Requested_Periodic_TAU, char *Requested_Active_Time)
 {
   if ( (m_parser.send(F("AT+CPSMS=1,,,\"%s\",\"%s\""), Requested_Periodic_TAU, Requested_Active_Time)
         && m_parser.recv(F(RESP_OK))) ) {
@@ -390,7 +402,7 @@ void setPSMActivate(char *Requested_Periodic_TAU, char *Requested_Active_Time)
   }
 }
 
-void setPSMDeactivate()
+void setPSMDeactivate_BG96()
 {
   if ( (m_parser.send(F("AT+CPSMS=0"))
         && m_parser.recv(F(RESP_OK))) ) {
@@ -398,11 +410,69 @@ void setPSMDeactivate()
   }
 }
 
+int8_t getPsmSetting_BG96(bool * enable, int * Requested_Periodic_TAU, int * Requested_Active_Time)
+{
+  int8_t ret = RET_NOK;
+  int en = 0;
+
+  if (m_parser.send("AT+QPSMS?") // BG96 only
+      && m_parser.recv("+QPSMS: %d,,,\"%d\",\"%d\"", &en, Requested_Periodic_TAU, Requested_Active_Time)
+      && m_parser.recv("OK"))
+  {
+    if (en != 0)
+      *enable = true;
+    else
+      *enable = false;
+
+    LOGDEBUG("Get PSM setting success\r\n");
+    ret = RET_OK;
+  }
+  return ret;
+}
+
+
+// ----------------------------------------------------------------
+// Functions: Cat.M1 Network time
+// ----------------------------------------------------------------
+
+int8_t getNetworkTimeGMT_BG96(char * timestr)
+{
+  int8_t ret = RET_NOK;
+  if (m_parser.send("AT+QLTS=1")
+      && m_parser.recv("+QLTS: \"%[^\"]\"", timestr)
+      && m_parser.recv("OK"))
+  {
+    //LOGDEBUG("Get current GMT time success\r\n");
+    ret = RET_OK;
+  }
+  return ret;
+}
+
+int8_t getNetworkTimeLocal_BG96(char * timestr)
+{
+  int8_t ret = RET_NOK;
+  if (m_parser.send("AT+QLTS=2")
+      && m_parser.recv("+QLTS: \"%[^\"]\"", timestr)
+      && m_parser.recv("OK"))
+  {
+    //LOGDEBUG("Get current local time success\r\n");
+    ret = RET_OK;
+  }
+  return ret;
+}
+
+void printTimerInfo_BG96(void)
+{
+  char buf[20];
+  timeCount ++;
+  sprintf((char *)buf, "%d sec", timeCount);
+  MYPRINTF(buf);
+}
 // ----------------------------------------------------------------
 // Functions: Cat.M1 module reset
 // ----------------------------------------------------------------
 
-void moduleReset(void)
+void catm1DeviceReset_BG96(void)
 {
   if ( (m_parser.send(F("AT+CFUN=1,1"))
         && m_parser.recv(F(RESP_OK))) ) {
@@ -410,55 +480,5 @@ void moduleReset(void)
   }
 }
 
-// ----------------------------------------------------------------
-// Functions: Cat.M1 module get current time
-// ----------------------------------------------------------------
-
-void getcurrentTime(void)
-{
-  //char resp_str[50] = {0, };
 
 
-  if ( m_parser.send(F("AT+QLTS=1")) &&
-       m_parser.recv("+QLTS: %s\n", timeBuf) &&
-       m_parser.recv(F(RESP_OK)) ) {
-
-    //sprintf((char *)timeBuf, "%s", resp_str );
-    LOGDEBUG(timeBuf);
-  }
-}
-
-
-int8_t checkRecvData_BG96(void)
-{
-  int8_t ret = RET_NOK;
-  int id = 0;
-  char cmd[20];
-
-  bool received = false;
-
-  sprintf(cmd, "PSM POWER DOWN");
-  m_parser.set_timeout(1);
-  received = m_parser.recv(cmd);
-  m_parser.set_timeout(BG96_DEFAULT_TIMEOUT);
-
-  if (received) ret = RET_OK;
-  return ret;
-}
-
-int8_t checkRecvData1_BG96(void)
-{
-  int8_t ret = RET_NOK;
-  int id = 0;
-  char cmd[20];
-
-  bool received = false;
-
-  sprintf(cmd, "RDY");
-  m_parser.set_timeout(1);
-  received = m_parser.recv(cmd);
-  m_parser.set_timeout(BG96_DEFAULT_TIMEOUT);
-
-  if (received) ret = RET_OK;
-  return ret;
-}

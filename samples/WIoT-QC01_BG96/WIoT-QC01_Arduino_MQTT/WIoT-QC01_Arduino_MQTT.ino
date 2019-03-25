@@ -10,9 +10,9 @@
 #define BG96_APN_PROTOCOL_IPv4             1
 #define BG96_APN_PROTOCOL_IPv6             2
 #define BG96_DEFAULT_TIMEOUT               1000
-#define BG96_CONNECT_TIMEOUT        15000
-#define BG96_SEND_TIMEOUT           500
-#define BG96_RECV_TIMEOUT           500
+#define BG96_CONNECT_TIMEOUT               15000
+#define BG96_SEND_TIMEOUT                  500
+#define BG96_RECV_TIMEOUT                  500
 
 #define BG96_APN_PROTOCOL                  BG96_APN_PROTOCOL_IPv6
 #define WM_N400MSE_DEFAULT_BAUD_RATE       115200
@@ -39,7 +39,7 @@
 
 // Connection info:
 // HiveMQ Websocket client(http://www.hivemq.com/demos/websocket-client/)
-#define MQTT_CLIENTID                     "clientExample2"
+#define MQTT_CLIENTID                     "clientExample"
 #define MQTT_USERID                       "testid"
 #define MQTT_PASSWORD                     "testpassword"
 #define MQTT_QOS0                         0
@@ -68,9 +68,6 @@ int mqtt_socket_id = 0;
 ATCmdParser m_parser = ATCmdParser(&Serial3);
 
 void setup() {
-
-  m_parser.debug_on(1);
-
   char buf[100];
 
   // put your setup code here, to run once:
@@ -87,7 +84,7 @@ void setup() {
   MYPRINTF("LTE Cat.M1 Version");
   MYPRINTF("=================================================");
   MYPRINTF(">> Target Board: WIoT-QC01 (Quectel BG96)");
-  MYPRINTF(">> Sample Code: HTTP Test");
+  MYPRINTF(">> Sample Code: MQTT Test");
   MYPRINTF("=================================================\r\n");
 
   for (int i = 0; i < 5; i++)
