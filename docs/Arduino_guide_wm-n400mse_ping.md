@@ -25,7 +25,7 @@
 |:--------:|:--------:|
 | [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-WM01 (WM-N400MSE) |
 
-<a name="#Step-1-Overview"></a>
+<a name="Step-1-Overview"></a>
 ## 소개
 본 문서에서는 Arduino IDE 기반 개발 환경에서 WIZnet IoT shield와 Arduino Mega2560 Rev3 보드를 이용하여 Cat.M1 단말의 Ping 테스트 방법에 대한 가이드를 제공합니다.
 
@@ -37,7 +37,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 4. 네트워크 인터페이스(PDP Context) 활성화
 5. Ping 테스트
 
-<a name="#Step-2-ATCommand"></a>
+<a name="Step-2-ATCommand"></a>
 ## AT 명령어
 
 ### 1. Echo 모드 설정
@@ -46,7 +46,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Write | ATE(value) | OK | ATE0<br>OK |
 
@@ -62,7 +62,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Read | AT$$STAT? | $$STAT:(status)<br><br>OK | AT$$STAT?<br>$$STAT:READY<br><br>OK |
 
@@ -78,7 +78,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Read | AT$$CEREG? | $$STAT:(value),(status)<br><br>OK | AT+CEREG?<br>+CEREG:0,1<br><br>OK |
 
@@ -97,7 +97,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Write  | AT*RNDISDATA=(value1) | *RNDISDATA:(value1)<br><br>OK | AT\*RNDISDATA=1<br>*RNDISDATA: 1<br><br>OK |
 
@@ -114,7 +114,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 **Syntax:**
 
-| Type | Syntax | Respones | Example
+| Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
 | Write | AT*PING=(Host),(Count) | OK | AT*PING=8.8.8.8,2<br>OK<br>PING 64:ff9b::8.8.8.8(64:ff9b::808:808) 56 data bytes<br>64 bytes from 64:ff9b::808:808: icmp_seq=1 ttl=115 time=150 ms<br>64 bytes from 64:ff9b::808:808: icmp_seq=2 ttl=115 time=102 ms<br><br>--- 64:ff9b::8.8.8.8 ping statistics ---<br>2 packets transmitted, 2 received, 0% packet loss, time 1004ms<br>rtt min/avg/max/mdev = 102.291/126.535/150.780/24.247 ms<br>rtt min/avg/max/mdev = 102.291/126.535/150.780/24.247 ms<br>AT+WSOCR=1,www.kma.go.kr,80,1,0<br>+WSOCR:1,1,64:ff9b::794e:2229/80,TCP |
 
@@ -126,7 +126,7 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 | (Host) | String | IP address (URL, IPv4, IPv6) |
 | (Count) | Integer | Ping 송신 횟수 |
 
-<a name="#Step-3-SampleCode"></a>
+<a name="Step-3-SampleCode"></a>
 ## 동작 구조 예제
 
 ```
@@ -173,7 +173,7 @@ OK
 
 ```
 
-<a name="#Step-4-Build-and-Run"></a>
+<a name="Step-4-Build-and-Run"></a>
 ## 예제 코드 빌드 및 실행
 
 ### 1. Import project
@@ -191,12 +191,12 @@ Ping 테스트 예제 코드는 별도로 수정할 Parameter가 없습니다.
 
 상단 메뉴의 Complie 버튼을 클릭합니다.
 
-![][1]
+![][compile1]
 
 컴파일이 완료 되면 다음과 같이 업로드를 수행하여 최종적으로 보드에 업로드를 수행 합니다.
 업로드가 정상적으로 완료되면 'avrdude done. Thank you.' 메시지를 확인 할 수 있습니다.
 
-![][2]
+![][compile2]
 
 ### 4. Run
 #### 4.1 Connect your board
@@ -214,10 +214,10 @@ Ping 테스트 예제 코드는 별도로 수정할 Parameter가 없습니다.
 
 
 #### 4.2 Set up serial monitor
-![][4]
+![][serialMonitor]
 
 #### 4.3 Ping test to Google DNS server
-![][5]
+![][1]
 
 
 
@@ -228,8 +228,8 @@ Ping 테스트 예제 코드는 별도로 수정할 Parameter가 없습니다.
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
  
 [hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png 
+[compile1]: ./imgs/arduino_guide_ide_compile.png
+[compile2]: ./imgs/arduino_guide_ide_compile_finish.png
+[serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
+
 [1]: ./imgs/Arduino_guide_wm-n400mse_ping_1.png
-[2]: ./imgs/Arduino_guide_wm-n400mse_ping_2.png
-[3]: ./imgs/Arduino_guide_wm-n400mse_ping_3.png
-[4]: ./imgs/Arduino_guide_wm-n400mse_ping_4.png
-[5]: ./imgs/Arduino_guide_wm-n400mse_ping_5.png
