@@ -24,13 +24,14 @@
 #define DEVNAME                             CATM1_DEVICE_NAME_BG96
 
 #define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
-#define MYPRINTF(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("[MAIN] "); Serial.println(x); }
+#define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
 // Sensors
 #define MBED_CONF_IOTSHIELD_SENSOR_CDS     A0
 #define MBED_CONF_IOTSHIELD_SENSOR_TEMP    A1
 
 // Debug message settings
+#define BG96_PARSER_DEBUG                  DEBUG_DISABLE
 #define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
 #define REQUESTED_PERIODIC_TAU            "10100101"
