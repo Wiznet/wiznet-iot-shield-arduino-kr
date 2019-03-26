@@ -14,7 +14,7 @@
 
 > * 하드웨어 설정과 개발환경 구축은 **[Arduino 기반으로 Cat.M1 디바이스 개발 시작하기][arduino-getting-started]** 문서에 상세히 설명되어 있습니다.
 
-> * Cat.M1과 같은 Cellular IoT 디바이스는 통신 서비스 사업자의 운영 기준 및 규정에 따라 모듈 펌웨어 및 동작 방식에 차이가 있을 수 있습니다. 본 문서는 한국 **[SK Telecom Cat.M1 서비스][skt-iot-portal]**를 기준으로 작성되었습니다.
+> * Cat.M1과 같은 Cellular IoT 디바이스는 통신 서비스 사업자의 운영 기준 및 규정에 따라 모듈 펌웨어 및 동작 방식에 차이가 있을 수 있습니다. 본 문서는 한국 **[SK Telecom Cat.M1 서비스][skt-iot-portal]** 를 기준으로 작성되었습니다.
 
 
 ### Development Environment
@@ -24,7 +24,7 @@
 
 | MCU Board | IoT Shield Interface Board |
 |:--------:|:--------:|
-| [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-WM01 (WM-N400MSE) |
+| [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-QC01 (BG96) |
 
 <a name="Step-1-Overview"></a>
 
@@ -236,9 +236,10 @@ GPS의 위치 정보 중 위도(latitude)와 경도(longitude)를 Google Maps에
 
 
 
+[arduino-getting-started]: ./Arduino_get_started.md
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
-[link-mbed-compiler]: https://ide.mbed.com/compiler/
-[link-nucleo-l476rg]: https://os.mbed.com/platforms/ST-Nucleo-L476RG/
+[link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
+[link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
 [link-bg96-atcommand-manual]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_AT_Commands_Manual_V2.1.pdf
 [link-bg96-gnss-manual]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_GNSS_AT_Commands_Manual_V1.1.pdf
 
