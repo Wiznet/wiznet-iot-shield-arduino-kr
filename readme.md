@@ -59,7 +59,7 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 
 ## Support
 
-![][forum]
+[![WIZnet Developer Forum][forum]](https://forum.wiznet.io/)
 
 **[WIZnet Developer Forum](https://forum.wiznet.io/)** 에서 전세계의 WIZnet 기술 전문가들에게 질문하고 의견을 전달할 수 있습니다.
 지금 방문하세요.
