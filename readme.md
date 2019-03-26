@@ -49,6 +49,12 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 | PSM 저전력 모드    | :heavy_check_mark: | :heavy_check_mark: |    :heavy_check_mark:    | :heavy_multiplication_x: | Cat.M1 모듈에서 지원하는 저전력 모드(PSM) 활용 예제              |
 | ThingPlug 활용 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | SKT의 클라우드 서비스 ThingPlug 연동 예제와 Widget 활용 가이드 |
 
+### Other Samples
+|        Title       |     Code      |                            Description                           |
+|:------------------:|:------------------:|:----------------------------------------------------------------|
+| Onboard CDS Sensor |  [WIoT-Shield_SENSOR_CDS](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_CDS) | IoT Shield에 탑재된 CDS(조도센서) 활용 예제 (Pin: A0) |
+| Onboard Temp. Sensor| [WIoT-Shield_SENSOR_TEMP](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_TEMP) | IoT Shield에 탑재된 [LM35](http://www.ti.com/lit/ds/symlink/lm35.pdf)(온도센서) 활용 예제 (Pin: A1) |
+
 ## Documentation
 개발 시작 가이드 및 응용 가이드 문서는 본 저장소의 **[Wiki](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/wiki/)** 에서 확인 할 수 있습니다.
 
