@@ -52,8 +52,8 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 ### Other Samples
 |        Title       |     Code      |                            Description                           |
 |:------------------:|:------------------:|:----------------------------------------------------------------|
-| Onboard CDS Sensor |  [WIoT-Shield_SENSOR_CDS](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_CDS) | IoT Shield에 탑재된 CDS(조도센서) 활용 예제 (Pin: A0) |
-| Onboard Temp. Sensor| [WIoT-Shield_SENSOR_TEMP](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_TEMP) | IoT Shield에 탑재된 [LM35](http://www.ti.com/lit/ds/symlink/lm35.pdf)(온도센서) 활용 예제 (Pin: A1) |
+| [WIoT-Shield_SENSOR_CDS](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_CDS) | :heavy_check_mark: | IoT Shield에 탑재된 CDS(조도센서) 활용 예제 (Pin: A0) |
+| [WIoT-Shield_SENSOR_TEMP](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_TEMP) | :heavy_check_mark: | IoT Shield에 탑재된 [LM35](http://www.ti.com/lit/ds/symlink/lm35.pdf)(온도센서) 활용 예제 (Pin: A1) |
 
 ## Documentation
 개발 시작 가이드 및 응용 가이드 문서는 본 저장소의 **[Wiki](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/wiki/)** 에서 확인 할 수 있습니다.
