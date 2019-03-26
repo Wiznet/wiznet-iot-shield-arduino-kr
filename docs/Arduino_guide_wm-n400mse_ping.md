@@ -1,4 +1,4 @@
-# Arduino 기반의 Cat.M1 Ping 테스트 가이드
+# Arduino 기반의 Cat.M1 PING 테스트 가이드
 
 ## 목차
 
@@ -13,7 +13,7 @@
 
 > * 하드웨어 설정과 개발환경 구축은 **[Arduino 기반으로 Cat.M1 디바이스 개발 시작하기][arduino-getting-started]** 문서에 상세히 설명되어 있습니다.
 
-> * Cat.M1과 같은 Cellular IoT 디바이스는 통신 서비스 사업자의 운영 기준 및 규정에 따라 모듈 펌웨어 및 동작 방식에 차이가 있을 수 있습니다. 본 문서는 한국 **[SK Telecom Cat.M1 서비스][skt-iot-portal]** 를 기준으로 작성되었습니다.
+> * Cat.M1과 같은 Cellular IoT 디바이스는 통신 서비스 사업자의 운영 기준 및 규정에 따라 모듈 펌웨어 및 동작 방식에 차이가 있을 수 있습니다. 본 문서는 한국 **[SK Telecom Cat.M1 서비스][skt-iot-portal]**를 기준으로 작성되었습니다.
 
 
 ### Development Environment
@@ -191,12 +191,12 @@ Ping 테스트 예제 코드는 별도로 수정할 Parameter가 없습니다.
 
 상단 메뉴의 Complie 버튼을 클릭합니다.
 
-![][1]
+![][compile1]
 
 컴파일이 완료 되면 다음과 같이 업로드를 수행하여 최종적으로 보드에 업로드를 수행 합니다.
 업로드가 정상적으로 완료되면 'avrdude done. Thank you.' 메시지를 확인 할 수 있습니다.
 
-![][2]
+![][compile2]
 
 ### 4. Run
 #### 4.1 Connect your board
@@ -214,22 +214,22 @@ Ping 테스트 예제 코드는 별도로 수정할 Parameter가 없습니다.
 
 
 #### 4.2 Set up serial monitor
-![][4]
+![][serialMonitor]
 
 #### 4.3 Ping test to Google DNS server
-![][5]
+![][1]
 
 
 
 
-[arduino-getting-started]: ./Arduino_get_started.md
+[arduino-getting-started]: https://
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
 [link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
  
 [hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png 
+[compile1]: ./imgs/arduino_guide_ide_compile.png
+[compile2]: ./imgs/arduino_guide_ide_compile_finish.png
+[serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
+
 [1]: ./imgs/Arduino_guide_wm-n400mse_ping_1.png
-[2]: ./imgs/Arduino_guide_wm-n400mse_ping_2.png
-[3]: ./imgs/Arduino_guide_wm-n400mse_ping_3.png
-[4]: ./imgs/Arduino_guide_wm-n400mse_ping_4.png
-[5]: ./imgs/Arduino_guide_wm-n400mse_ping_5.png
