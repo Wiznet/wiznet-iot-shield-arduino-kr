@@ -219,13 +219,17 @@ int8_t getNetworkTimeLocal_BG96(char * timestr);
 
 #### 4.4 Demo
 ![][1]
+
 ..
 ...
 ....
+
 ![][2]
+
 ..
 ...
 ....
+
 ![][3]
 
 
