@@ -245,28 +245,16 @@ PSM 설정을 위해  테스트 예제 코드는 별도로 수정할 Parameter�
 
 
 
-[arduino-getting-started]: https://
-
+[arduino-getting-started]: ./Arduino_get_started.md
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
-
 [link-woorinet]: http://www.woori-net.com
-
 [link-wiznet]: https://www.wiznet.io
-
 [link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
-
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
 
-
-
 [hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png
-
 [compile1]: ./imgs/arduino_guide_ide_compile.png
-
 [compile2]: ./imgs/arduino_guide_ide_compile_finish.png
-
 [serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
-
-
 
 [1]: ./imgs/Arduino_guide_wm-n400mse_psm_1.png
