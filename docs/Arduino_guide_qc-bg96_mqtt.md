@@ -413,11 +413,15 @@ int8_t checkRecvMqttMessage_BG96(char * topic, int * msgid, char * msg);
 
 #### 4.4 Demo
 ![][5]
+
 ..
 ...
+
 ![][6]
+
 ..
 ...
+
 ![][7]
 
 
