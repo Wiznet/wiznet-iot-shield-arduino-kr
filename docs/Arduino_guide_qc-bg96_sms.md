@@ -347,7 +347,7 @@ int8_t deleteAllSMS_BG96(int delflag);
 
 
 
-[arduino-getting-started]: https://
+[arduino-getting-started]: ./Arduino_get_started.md
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
 [link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
