@@ -13,7 +13,7 @@
 
 > * 하드웨어 설정과 개발환경 구축은 **[Arduino 기반으로 Cat.M1 디바이스 개발 시작하기][arduino-getting-started]** 문서에 상세히 설명되어 있습니다.
 
-> * Cat.M1과 같은 Cellular IoT 디바이스는 통신 서비스 사업자의 운영 기준 및 규정에 따라 모듈 펌웨어 및 동작 방식에 차이가 있을 수 있습니다. 본 문서는 한국 **[SK Telecom Cat.M1 서비스][skt-iot-portal]**를 기준으로 작성되었습니다.
+> * Cat.M1과 같은 Cellular IoT 디바이스는 통신 서비스 사업자의 운영 기준 및 규정에 따라 모듈 펌웨어 및 동작 방식에 차이가 있을 수 있습니다. 본 문서는 한국 **[SK Telecom Cat.M1 서비스][skt-iot-portal]** 를 기준으로 작성되었습니다.
 
 
 ### Development Environment
@@ -23,7 +23,7 @@
 
 | MCU Board | IoT Shield Interface Board |
 |:--------:|:--------:|
-| [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-WM01 (WM-N400MSE) |
+| [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-QC01 (BG96) |
 
 <a name="Step-1-Overview"></a>
 ## 소개
@@ -336,14 +336,14 @@ int  dest_port = 50001;
 샘플 코드는 아래와 같은 순서로 동작합니다.
 
 1. 하드웨어 초기화 과정
-  * 시리얼 인터페이스 활성화 및 Parser 초기화
+   * 시리얼 인터페이스 활성화 및 Parser 초기화
 2. Cat.M1 모듈 상태 확인
-  * USIM 상태 확인
-  * 망 등록 상태 점검
+   * USIM 상태 확인
+   * 망 등록 상태 점검
 3. PDP context 활성화
 4. TCP client 동작
-  * 소켓 오픈 및 목적지(IP/Port) 연결
-  * 데이터 송신 및 수신
+   * 소켓 오픈 및 목적지(IP/Port) 연결
+   * 데이터 송신 및 수신
 
 > Cat.M1 모듈의 테스트를 위해 TCP client sample을 활용 할 경우, 사용자의 네트워크 구성에 따라 공유기(router)의 [포트 포워딩(Port forwarding)](https://opentutorials.org/course/3265/20038) 기능이 필요할 수 있습니다.
 >  * TCP server가 될 PC가 192.168.1.xxx 등의 사설 IP 주소 대역을 할당 받아 운용되고 있는 경우
