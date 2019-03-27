@@ -8,9 +8,6 @@
 #define LEDPIN                             13
 
 int val = 0;          // 온도 측정 값 넣을 변수
-float voltage = 0;    // 전압 계산 값 넣을 변수
-float celsius = 0;    // 섭씨 계산 값 넣을 변수
-float fahrenheit = 0; // 화씨 계산 값 넣을 변수
 
 void setup() {
   serialPcInit();
