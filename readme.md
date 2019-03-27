@@ -49,7 +49,7 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 | PSM 저전력 모드    | :heavy_check_mark: | :heavy_check_mark: |    :heavy_check_mark:    | :heavy_multiplication_x: | Cat.M1 모듈에서 지원하는 저전력 모드(PSM) 활용 예제              |
 | ThingPlug 활용 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | SKT의 클라우드 서비스 ThingPlug 연동 예제와 Widget 활용 가이드 |
 
-### Other Samples
+### Other Arduino Samples
 |        Title       |     Code      |                            Description                           |
 |:------------------:|:------------------:|:----------------------------------------------------------------|
 | [WIoT-Shield_SENSOR_CDS](https://github.com/Wiznet/wiznet-iot-shield-arduino-kr/tree/master/samples/WIoT-Shield/WIoT-Shield_SENSOR_CDS) | :heavy_check_mark: | IoT Shield에 탑재된 CDS(조도센서) 활용 예제 (Pin: A0) |
