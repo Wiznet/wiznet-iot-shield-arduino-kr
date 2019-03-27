@@ -219,7 +219,9 @@ int8_t getUsimStatus_BG96(void)
     return RET_OK;
   }
 
-  else if ( !(m_parser.send(F("AT+CPIN?")) && m_parser.recv(F("+CPIN: %[^,],%[^\n]\n"), usim_stat, detail)) ) {
+  else if ( m_parser.send(F("AT+CPIN?")) &&
+            m_parser.recv(F("+CPIN: %[^,],%[^\n]\n"), usim_stat, detail) &&
+            m_parser.recv(F(RESP_OK)) ) {
     sprintf((char *)buf, "USIM Satatus: %s, %s", usim_stat, detail);
     LOGDEBUG(buf);
     return RET_NOK;
