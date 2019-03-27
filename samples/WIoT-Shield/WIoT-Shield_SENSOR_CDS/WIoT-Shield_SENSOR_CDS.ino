@@ -1,20 +1,11 @@
 #include "Arduino.h"
-#include "at_cmd_parser.h"
 
-#define CATM1_DEVICE_NAME_BG96             "BG96"
-#define DEVNAME                             CATM1_DEVICE_NAME_BG96
-
-#define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
 #define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
 // Sensors
 #define IOTSHIELD_SENSOR_CDS               A0
 #define IOTSHIELD_SENSOR_TEMP              A1
 #define LEDPIN                             13
-
-// Debug message settings
-#define BG96_PARSER_DEBUG                  DEBUG_DISABLE
-#define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
 int val = 0;          // 온도 측정 값 넣을 변수
 float voltage = 0;    // 전압 계산 값 넣을 변수
