@@ -7,7 +7,7 @@
 #define IOTSHIELD_SENSOR_TEMP              A1
 #define LEDPIN                             13
 
-int val = 0;          // 온도 측정 값 넣을 변수
+int val = 0;          // CDS 측정 값 넣을 변수
 
 void setup() {
   serialPcInit();
