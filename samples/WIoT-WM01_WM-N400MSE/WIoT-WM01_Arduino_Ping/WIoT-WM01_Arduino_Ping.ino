@@ -14,13 +14,10 @@
 #define DEVNAME                            CATM1_DEVICE_NAME_WMN400MSE
 
 #define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
-#define MYPRINTF(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("[MAIN] "); Serial.println(x); }
-
-// Sensors
-#define MBED_CONF_IOTSHIELD_SENSOR_CDS     A0
-#define MBED_CONF_IOTSHIELD_SENSOR_TEMP    A1
+#define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
 // Debug message settings 
+#define BG96_PARSER_DEBUG                  DEBUG_DISABLE
 #define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
 ATCmdParser m_parser = ATCmdParser(&Serial3);
@@ -171,7 +168,9 @@ int8_t getUsimStatus_wm01(void)
     return RET_OK;
   }
 
-  else if ( !(m_parser.send(F("AT$$STAT?")) && m_parser.recv(F("$$STAT:%[^,],%[^\n]\n"), usim_stat, detail)) ) {
+  else if ( m_parser.send(F("AT$$STAT?")) &&
+              m_parser.recv(F("$$STAT:%[^,],%[^\n]\n"), usim_stat, detail) &&
+              m_parser.recv(F(RESP_OK)) ) {
     sprintf((char *)buf, "USIM Satatus: %s, %s", usim_stat, detail);
     LOGDEBUG(buf);
     return RET_NOK;

@@ -10,23 +10,21 @@
 #define WM_N400MSE_DEFAULT_BAUD_RATE      115200
 #define BG96_PARSER_DELIMITER             "\r\n"
 
-#define CATM1_DEVICE_NAME_WMN400MSE       "WM-N400MSE"
-#define DEVNAME                           CATM1_DEVICE_NAME_WMN400MSE
+#define CATM1_DEVICE_NAME_WMN400MSE        "WM-N400MSE"
+#define DEVNAME                            CATM1_DEVICE_NAME_WMN400MSE
 
 #define LOGDEBUG(x)                        if(CATM1_DEVICE_DEBUG == DEBUG_ENABLE) { Serial.print("["); Serial.print(F(DEVNAME)); Serial.print("] ");  Serial.println(x); }
 #define MYPRINTF(x)                        { Serial.print("[MAIN] "); Serial.println(x); }
 
-// Debug message settings 
+// Debug message settings
 #define BG96_PARSER_DEBUG                  DEBUG_DISABLE
 #define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
-#define REQUESTED_PERIODIC_TAU            "10000110"
-#define REQUESTED_ACTIVE_TIME             "00100001"
+char *phone_number = "01090373914";
+char *send_message = "48656C6C6F2057495A6E6574204361742E4D31";
+String rxdata;
 
 ATCmdParser m_parser = ATCmdParser(&Serial3);
-
-char hour[5], minute[5], second[5];
-char timeBuf[35];
 
 void setup() {
   // put your setup code here, to run once:
@@ -43,7 +41,7 @@ void setup() {
   MYPRINTF("LTE Cat.M1 Version");
   MYPRINTF("=================================================");
   MYPRINTF(">> Target Board: WIoT-WM01 (Woori-Net WM-N400MSE)");
-  MYPRINTF(">> Sample Code: PSM Test");
+  MYPRINTF(">> Sample Code: SMS Test");
   MYPRINTF("=================================================\r\n");
 
   for (int i = 0; i < 5; i++)
@@ -58,18 +56,15 @@ void setup() {
     delay(1000);
   }
 
-  setContextActivate_wm01();
+  setRecvSMSUart();
 
-  setPSMActivate(REQUESTED_PERIODIC_TAU, REQUESTED_ACTIVE_TIME);
-  
-  moduleReset();
+  sendSMS(phone_number, send_message);
+
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  getcurrentTime();
-  delay(1000);
-
+  rxdataHandling();
 }
 
 void serialPcInit(void)
@@ -110,7 +105,7 @@ int8_t waitCatM1Ready()
     delay(1000);
   }
   if (!initOK) {
-    Serial.println("[WM-N400MSE] AT Command: Not Available");
+    MYPRINTF("WM-N400MSE AT Command Not Available\r\n");
     return RET_NOK;
   }
 }
@@ -201,7 +196,7 @@ int8_t getNetworkStatus_wm01(void)
     }
 
     else if (( atoi(stat) != 1 )) {
-      sprintf((char *)buf, "Network Status: %d, %d", atoi(mode), atoi(stat));
+      sprintf((char *)buf, "Network Status: %d, %d\r\n", atoi(mode), atoi(stat));
       LOGDEBUG(buf);
       return RET_NOK;
     }
@@ -235,62 +230,52 @@ void getSwVersion_wm01(void)
 }
 
 // ----------------------------------------------------------------
-// Functions: Cat.M1 PDP context activate
+// Functions: Cat.M1 SMS
 // ----------------------------------------------------------------
 
-void setContextActivate_wm01(void)
+void sendSMS(char *_phone_number, char *_send_message)
 {
-  if ( (m_parser.send(F("AT*RNDISDATA=1"))
-        && m_parser.recv(F("\r\n"))
+  char buf[100];
+  if ( (m_parser.send(F("AT*SMSMO=%s,,1,1,%s"), _phone_number, _send_message)
+        //&& m_parser.recv(F(RESP_OK))
+        && m_parser.recv(F("*SMSACK"))) ) {
+
+    sprintf((char *)buf, "[SMS Send] to %s, \"%s\"\r\n", _phone_number, _send_message);
+
+    LOGDEBUG(">> SMS send success\r\n");
+    MYPRINTF(buf);
+  }
+}
+
+void setRecvSMSUart(void)
+{
+  if ( (m_parser.send(F("AT*SKT*NEWMSG=4098"))
         && m_parser.recv(F(RESP_OK))) ) {
-    LOGDEBUG("PDP Context Activation: Success\r\n");
+    LOGDEBUG("Set to receive SMS from UART: Success\r\n");
   }
 }
 
-// ----------------------------------------------------------------
-// Functions: Cat.M1 PSM activate / deactivate
-// ----------------------------------------------------------------
-
-void setPSMActivate(char *Requested_Periodic_TAU, char *Requested_Active_Time)
+void rxdataHandling(void)
 {
-  if ( (m_parser.send(F("AT+CPSMS=1,,,\"%s\",\"%s\""), Requested_Periodic_TAU, Requested_Active_Time)
-        && m_parser.recv(F(RESP_OK))) ) {
-    LOGDEBUG("PSM Activate: Success\r\n");
+  char buf[100];
+  if (Serial3.available())
+  {
+    rxdata = Serial3.readStringUntil('\n');
+    const char* chr = rxdata.c_str();
+
+    if ( strstr(chr, "*SKT*NEWMSG:") != NULL )
+    {
+      sprintf((char *)buf, "[SMS Recv] %s\r\n", chr);
+
+      LOGDEBUG("<< SMS recv success\r\n");
+      MYPRINTF(buf);
+
+      m_parser.send(F("AT*SKT*MTACK=0"));
+      m_parser.recv(F(RESP_OK));
+      m_parser.flush();
+    }
   }
 }
 
-void setPSMDeactivate()
-{
-  if ( (m_parser.send(F("AT+CPSMS=0"))
-        && m_parser.recv(F(RESP_OK))) ) {
-    LOGDEBUG("PSM Deactivate: Success\r\n");
-  }
-}
 
-// ----------------------------------------------------------------
-// Functions: Cat.M1 module reset
-// ----------------------------------------------------------------
 
-void moduleReset(void)
-{
-  if ( (m_parser.send(F("AT*SKT*RESET"))
-        && m_parser.recv(F("*SKT*RESET:1\r\n"))
-        && m_parser.recv(F(RESP_OK))) ) {
-    LOGDEBUG("Reset: Success\r\n");
-  }
-}
-
-// ----------------------------------------------------------------
-// Functions: Cat.M1 module get current time
-// ----------------------------------------------------------------
-
-void getcurrentTime(void)
-{
-  if ( m_parser.send(F("AT$$MSTIME?")) &&
-       m_parser.recv(F("$$MSTIME: %*[^,],%*[^,],%*[^,],%*[^,],%[^,],%[^,],%[^\n]\n"), hour, minute, second) &&
-       m_parser.recv(F(RESP_OK)) ) {
-
-    sprintf((char *)timeBuf, "Current Time: %d h %d m %d s", atoi(hour), atoi(minute), atoi(second) );
-    LOGDEBUG(timeBuf);
-  }
-}
