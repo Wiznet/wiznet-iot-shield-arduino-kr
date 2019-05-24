@@ -78,7 +78,7 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 [link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
 
-[hw-stack-arduinomega]: ./docs/imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png
+[hw-stack-arduinomega]: ./docs/imgs/hw/wiot-shield-qc01-arduinomega2560.png
 
 [forum]: ./docs/imgs/forum.jpg
 
