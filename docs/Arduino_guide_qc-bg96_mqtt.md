@@ -23,7 +23,7 @@
 
 | MCU Board | IoT Shield Interface Board |
 |:--------:|:--------:|
-| [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-WM01 (WM-N400MSE) |
+| [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-QC01 (BG96) |
 
 <a name="Step-1-Overview"></a>
 ## 소개
