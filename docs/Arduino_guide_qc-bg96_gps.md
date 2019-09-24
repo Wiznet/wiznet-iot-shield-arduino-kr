@@ -1,4 +1,4 @@
-# MBED 기반으로 Cat.M1 GPS 활용하기
+# Arduino 기반으로 Cat.M1 GPS 활용하기
 
 
 ## 목차
