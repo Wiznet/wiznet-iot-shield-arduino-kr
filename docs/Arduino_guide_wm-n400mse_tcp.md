@@ -312,7 +312,7 @@ OK
 다음 링크에서 Arduino 예제 코드를 다운로드한 후, ino 확장자의 프로젝트 파일을 실행 시킵니다.
 
 > 예제에서 활용할 Ping test sample code는 저장소의 아래 경로에 위치하고 있습니다.
-> * `\samples\WIoT-QC01_BG96\WIoT-QC01_Arduino_TCP\`
+> * `\samples\WIoT-WM01_WM-N400MSE\WIoT-WM01_Arduino_TCP\`
 
 
 ### 2. Modify parameters
