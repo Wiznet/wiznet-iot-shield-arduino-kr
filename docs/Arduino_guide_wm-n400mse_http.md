@@ -302,8 +302,8 @@ HTTP 요청에 대한 응답으로 기상청 날씨 정보를 획득하여 시�
 
 [arduino-getting-started]: ./mbed_get_started.md
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
-[link-arduino-compiler]: https://ide.mbed.com/compiler/
-[link-nucleo-l476rg]: https://os.mbed.com/platforms/ST-Nucleo-L476RG/
+[link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
+[link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
 [link-wm-n400mse-atcommand-manual]: ./datasheet/WM-N400MSE_AT_Commands_Guide_v1.1.pdf
 
 [import1]: ./imgs/mbed_guide_webide_import.png
