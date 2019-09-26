@@ -167,16 +167,24 @@ GPS의 위치 정보 중 위도(latitude)와 경도(longitude)를 Google Maps에
 
 
 
+[arduino-getting-started]: ./Arduino_get_started.md
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
-[link-mbed-compiler]: https://ide.mbed.com/compiler/
-[link-nucleo-l476rg]: https://os.mbed.com/platforms/ST-Nucleo-L476RG/
-[link-wm-n400mse-atcommand-manual]: ./datasheet/WM-N400MSE_AT_Commands_Guide_v1.1.pdf
-[link-wm-n400mse-gnss-manual]: ./datasheet/WM-N400S%20series_GPS_Guide.pdf
+[link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
+[link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
+[link-bg96-atcommand-manual]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_AT_Commands_Manual_V2.1.pdf
+[link-bg96-mqtt-an]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_MQTT_Application_Note_V1.0.pdf
 
-[mbed-getting-started]: ./mbed_get_started.md
-[mbed-guide-bg96-tcp]: ./mbed_guide_bg96_tcp.md
-[mbed-guide-bg96-http]: ./mbed_guide_bg96_http.md
-[mbed-guide-bg96-mqtt]: ./mbed_guide_bg96_mqtt.md
+[hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png 
+[compile1]: ./imgs/arduino_guide_ide_compile.png
+[compile2]: ./imgs/arduino_guide_ide_compile_finish.png
+[serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
+
+[1]: ./imgs/arduino_guide_bg96_tcp-1.png
+[2]: ./imgs/arduino_guide_wmn400_tcp-2.png
+[3]: ./imgs/arduino_guide_wmn400_tcp-3.png
+[4]: ./imgs/arduino_guide_wmn400_tcp-4.png
+[5]: ./imgs/arduino_guide_wmn400_tcp-5.png
+
 
 [import1]: ./imgs/mbed_guide_webide_import.png
 [import2]: ./imgs/mbed_guide_webide_import_repo.png
