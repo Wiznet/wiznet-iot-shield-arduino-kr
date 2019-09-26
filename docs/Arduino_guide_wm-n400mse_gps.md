@@ -173,6 +173,8 @@ GPS의 위치 정보 중 위도(latitude)와 경도(longitude)를 Google Maps에
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
 [link-bg96-atcommand-manual]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_AT_Commands_Manual_V2.1.pdf
 [link-bg96-mqtt-an]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_MQTT_Application_Note_V1.0.pdf
+[link-wm-n400mse-atcommand-manual]: ./datasheet/WM-N400MSE_AT_Commands_Guide_v1.1.pdf
+[link-wm-n400mse-gnss-manual]: ./datasheet/WM-N400S%20series_GPS_Guide.pdf
 
 [hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png 
 [compile1]: ./imgs/arduino_guide_ide_compile.png
