@@ -90,15 +90,6 @@ if(sockOpenConnect_WM01(protocol, dest_domain_name, dest_port, packet_type) == R
         if(sendData_WM01() == RET_OK)
         {
             MYPRINTF("Data Send : success\r\n");
-            
-          /*  if(recvData_WM01() == RET_OK)
-           {
-               MYPRINTF("Data Receive : success\r\n");
-           }
-           else
-            {
-                MYPRINTF("Data Receive : failed\r\n");
-            }*/
         }
         else
         {
@@ -391,9 +382,6 @@ int8_t sendData_WM01(void)
   m_parser.send("%s", rest_data_2nd);
   m_parser.send("%s", rest_data_3rd);
   m_parser.send("\r\n");
-//  m_parser.send("");
- // m_parser.send("\r\n");
- // m_parser.send("\r\n");
 
   if ( m_parser.recv("+WSOWR:%d,%d", &ok, &id ) && m_parser.recv("OK")){
     if (ok == 1) { ret = RET_OK; }
@@ -406,40 +394,11 @@ int8_t sendData_WM01(void)
 
 int8_t recvData_WM01(void)
 {
-/*  int8_t ret = RET_NOK;
-  int id = 0;
-  int status_code = 0;
-  int bufsize = 0;
-  char _tmpbuf[50] = {0, };
-  char http_version[10]={0, };
-  String rxdata;
-  m_parser.set_timeout(5000);
-  recvTime = millis();
 
- // if(m_parser.recv("+WSORD:%d,%d,%s %d OK", &id, &bufsize, http_version, &status_code)){
-    
-    while((millis() - recvTime) < 5000){
-     // rxdata = Serial3.readStringUntil('\n');
-     // Serial.println(rxdata);
-      Serial.print(m_parser.p_getc());
-    }
-    ret = RET_OK;
- // }
-  
-  m_parser.set_timeout(WMN400MSE_DEFAULT_TIMEOUT);
-  m_parser.flush();
-
-  return ret;*/
-  
   char buf[100];
   if (Serial3.available())
   {
     Serial.println(Serial3.readStringUntil('\n'));
-    //rxdata = Serial3.readStringUntil('\n');
-    //const char* chr = rxdata.c_str();
-
-    //chr);
-
   }
   
 }
