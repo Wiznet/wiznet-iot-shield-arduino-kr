@@ -213,90 +213,61 @@ Connection: close
 .....................................................................
 ```
 
+
 <a name="Step-4-Build-and-Run"></a>
 ## 예제 코드 빌드 및 실행
 
 ### 1. Import project
+다음 링크에서 Arduino 예제 코드를 다운로드한 후, ino 확장자의 프로젝트 파일을 실행 시킵니다.
 
-MBED 온라인 컴파일러에 Log in 하여 상단 메뉴의 `Import`를 클릭합니다.
+> 예제에서 활용할 Ping test sample code는 저장소의 아래 경로에 위치하고 있습니다.
+> * `\samples\WIoT-WM01_WM-N400MSE\WIoT-WM01_Arduino_HTTP\`
 
-`Programs` 탭을 클릭 후 검색창에 다음 예제를 검색하여 나의 Program Workspace에 추가합니다.
-
-
-| Sample code | Link |
-|:--------|:--------|
-| WIZnet-IoTShield-WM-N400MSE-HTTP | https://os.mbed.com/users/AustinKim/code/WIZnet-IoTShield-WM-N400MSE-HTTP/ |
-
-
-> `Import Programs` 팝업 창이 활성화 될 때, Import As 옵션이 Program으로 설정되어 있어야 합니다.
-
-![][import1]
-
-링크를 클릭하여 예제 프로젝트의 저장소를 방문한 경우, 오른쪽 상단 `Repository toolbox`의 `Import into Compiler`를 클릭하시면 나의 Program Workspace 해당 예제를 추가 할 수 있습니다.
-
-![][import2]
 
 ### 2. Modify parameters
 
 만약 다른 서비스의 API 테스트를 위해 URL을 변경하려는 경우, 다음 변수의 내용을 변경하면 됩니다.
 
 ````cpp
-// Destination (Remote Host)
-// Domain Name and Port number
-char dest_domain_name[] = "www.kma.go.kr";
-int  dest_port = 80;
-````
-````cpp
-// REST(Representational State Transfer) API
-char rest_data_1st[] = "GET /wid/queryDFSRSS.jsp?zone=4113552000 HTTP/1.1";
-char rest_data_2nd[] = "HOST: www.kma.go.kr";
-char rest_data_3rd[] = "Connection: close";
+// Sample HTTP URL: Weather info by Korea Meteorological Administration
+char request_url[] = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=4113552000";
 ````
 
 ### 3. Compile
 
-상단 메뉴의 `Complie` 버튼을 클릭합니다.
+상단 메뉴의 Compile 버튼을 클릭합니다.
 
-![][compile]
+컴파일이 완료 되면 다음과 같이 업로드를 수행하여 최종적으로 보드에 업로드를 수행 합니다.
+업로드가 정상적으로 완료되면 'avrdude done. Thank you.' 메시지를 확인 할 수 있습니다.
 
-컴파일이 성공적으로 완료되면 `project_name.bin` 파일이 생성되어 download 됩니다. 이 파일을 `Drag & Drop`하여 연결된 MBED target 보드에 삽입하면 firmware write가 완료됩니다.
+![][compile2]
 
 ### 4. Run
 
 예제 샘플 코드를 통해 Cat.M1 모듈의 HTTP client 운용 방법에 대해 파악할 수 있습니다.
 
-> * 예제 샘플 코드는 `동작 구조 예제` 를 코드로 구현한 것입니다. 만약 구체적인 응용 프로젝트로 구현될 경우, 수신된 HTTP response 메시지를 parsing하여 원하는 정보를 획득 후 이에 해당하는 동작 구현이 추가되는 것이 일반적입니다.
 
-#### 4.1 Functions
+#### 4.1 Connect your board
+스타터 키트와 Arduino Mega2560과 Uart 통신을 하기위해서는 아래와 같이 점퍼 연결이 필요합니다.
+예제 구동을 위해 WIZnet IoT Shield의 UART TXD와 RXD 핀을 Arduino Mega2560 보드의 'Serial 3' `TX3`(14), `RX3`(15) 에 연결합니다.
 
-```cpp
-int8_t sockOpenConnect_WM01(int protocol, const char *addr, int port, int pckttype);
-```
- * client로 동작하며 소켓 서비스를 생성 및 연결을 합니다.
- * server 접속 정보(domain name, port number), 전송을 진행 할 message packet type을 설정합니다.
+| ArduinoMega2560 | TX3 (14)  | RX3 (15) |
+|:----:|:----:|:----:|
+| WIZnet IoT Shield | RXD<br>(UART Rx for D1/D8)  | TXD<br>(UART Tx for D0/D2) |
 
-```cpp
-int8_t sockClose_WM01(void);
-```
- * 지정된 소켓 서비스의 연결을 종료합니다.
+> 보드 상단에 위치한 UART_SEL 점퍼를 제거한 후 (실크 기준) 오른쪽 핀을 Arduino 보드와 연결합니다.
 
-```cpp
-int8_t sendData_WM01(void);
-```
-  * 지정된 소켓으로 데이터를 전송합니다.
+![][hw-stack]
 
-```cpp
-int8_t recvData_WM01(void);
-```
- * 지정된 소켓으로부터 데이터를 수신합니다.
+#### 4.2 Set up serial monitor
+![][serialMonitor]
 
-
-
-#### 4.2 Demo
-
-HTTP 요청에 대한 응답으로 기상청 날씨 정보를 획득하여 시리얼 터미널을 통해 출력합니다.
-
+#### 4.3 Demo
 ![][1]
+. . .
+![][2]
+
+
 
 
 [arduino-getting-started]: ./Arduino_get_started.md
@@ -305,16 +276,11 @@ HTTP 요청에 대한 응답으로 기상청 날씨 정보를 획득하여 시�
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
 [link-bg96-atcommand-manual]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_AT_Commands_Manual_V2.1.pdf
 [link-bg96-mqtt-an]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_MQTT_Application_Note_V1.0.pdf
-[link-wm-n400mse-atcommand-manual]: ./datasheet/WM-N400MSE_AT_Commands_Guide_v1.1.pdf
-[link-wm-n400mse-gnss-manual]: ./datasheet/WM-N400S%20series_GPS_Guide.pdf
 
 [hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png 
 [compile1]: ./imgs/arduino_guide_ide_compile.png
 [compile2]: ./imgs/arduino_guide_ide_compile_finish.png
 [serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
 
-[1]: ./imgs/arduino_guide_bg96_tcp-1.png
-[2]: ./imgs/arduino_guide_wmn400_tcp-2.png
-[3]: ./imgs/arduino_guide_wmn400_tcp-3.png
-[4]: ./imgs/arduino_guide_wmn400_tcp-4.png
-[5]: ./imgs/arduino_guide_wmn400_tcp-5.png
+[1]: ./imgs/arduino_guide_wmn400_http-2.png
+[2]: ./imgs/arduino_guide_wmn400_http-3.png
