@@ -165,20 +165,115 @@ Active/Sleep 상태는 **AT$$MSTIME?** 명령어를 이용하여 현재 시간�
 
 ```
 
+
 <a name="Step-4-Build-and-Run"></a>
+## 예제 코드 빌드 및 실행
+
+### 1. Import project
+다음 링크에서 Arduino 예제 코드를 다운로드한 후, ino 확장자의 프로젝트 파일을 실행 시킵니다.
+
+> 예제에서 활용할 Ping test sample code는 저장소의 아래 경로에 위치하고 있습니다.
+> * `\samples\WIoT-QC01_BG96\WIoT-QC01_Arduino_PSM\`
+
+
+### 2. Modify parameters
+
+PSM 예제는 별도로 수정할 부분이 없습니다.
+
+> [주의] TAU 시간은 SKTelecom 기준으로 최소 5분까지만 지원됩니다. 5분 이하의 시간을 입력할 경우 SKTelecom 망에서 지원하지 않아 PSM 진입 후 Booting하지 않을 수 있습니다.
+
+### 3. Compile
+
+상단 메뉴의 Compile 버튼을 클릭합니다.
+
+![][compile1]
+
+컴파일이 완료 되면 다음과 같이 업로드를 수행하여 최종적으로 보드에 업로드를 수행 합니다.
+업로드가 정상적으로 완료되면 'avrdude done. Thank you.' 메시지를 확인 할 수 있습니다.
+
+![][compile2]
+
+### 4. Run
+
+예제 샘플 코드를 통해 Cat.M1 모듈의 PSM 설정 방법과 활용 방법에 대해 파악할 수 있습니다.
+
+> MQTT 프로토콜은 서비스를 제공하는 서버를 MQTT broker, 단말을 MQTT client로 표현하며, 약속된 Topic에 메시지를 발행하는 Publish와 미리 지정한 Topic으로부터 메시지가 발행되면 수신하는 Subscribe로 구성되어 있습니다.
+
+#### 4.1 Connect your board
+스타터 키트와 Arduino Mega2560과 Uart 통신을 하기위해서는 아래와 같이 점퍼 연결이 필요합니다.
+예제 구동을 위해 WIZnet IoT Shield의 UART TXD와 RXD 핀을 Arduino Mega2560 보드의 'Serial 3' `TX3`(14), `RX3`(15) 에 연결합니다.
+
+| ArduinoMega2560 | TX3 (14)  | RX3 (15) |
+|:----:|:----:|:----:|
+| WIZnet IoT Shield | RXD<br>(UART Rx for D1/D8)  | TXD<br>(UART Tx for D0/D2) |
+
+> 보드 상단에 위치한 UART_SEL 점퍼를 제거한 후 (실크 기준) 오른쪽 핀을 Arduino 보드와 연결합니다.
+
+![][hw-stack]
+
+#### 4.2 Functions
+
+```cpp
+int8_t setPsmActivate_AMM592(char * Requested_Periodic_TAU, char * Requested_Active_Time);
+```
+* PSM TAU와 Active time의 설정 및 기능 활성화를 수행합니다.
+* 파라메터는 "10010101", "00100100" 형태의 문자열입니다.
+
+```cpp
+int8_t setPsmDeactivate_AMM592(void);
+```
+* PSM 기능을 비활성화 하는 함수입니다.
+
+```cpp
+int8_t getPsmSetting_AMM592(bool * enable, int * Requested_Periodic_TAU, int * Requested_Active_Time);
+```
+* PSM 설정 정보를 확인합니다. 설정 정보를 저장할 변수들을 파라메터로 받아 활성화 여부 및 TAU, Active time을 돌려줍니다.
+* 확장 PSM 설정 명령어 기반으로 구현되어 시간 정보들을 초 단위로 리턴합니다.
+
+
+샘플 코드의 네트워크 시간 정보 관련 함수는 다음과 같습니다.
+
+```cpp
+int8_t getNetworkTimeLocal_AMM592(char * timestr);
+```
+* 파라메터를 통해 네트워크 동기화 시간을 기반으로 계산된 Local 시간을 문자열로 제공하는 함수입니다.
+* 한국의 경우 GMT+09가 적용됩니다.
+
+
+#### 4.3 Set up serial monitor
+![][serialMonitor]
+
+#### 4.4 Demo
+![][1]
+
+..
+...
+....
+
+![][2]
+
+..
+...
+....
+
+![][3]
+
 
 
 
 [arduino-getting-started]: ./Arduino_get_started.md
 [skt-iot-portal]: https://www.sktiot.com/iot/developer/guide/guide/catM1/menu_05/page_01
-[link-woorinet]: http://www.woori-net.com
-[link-wiznet]: https://www.wiznet.io
 [link-arduino-compiler]: https://www.arduino.cc/en/Main/Software
 [link-arduino Mega2560 Rev3]: https://store.arduino.cc/usa/mega-2560-r3
+[link-bg96-atcommand-manual]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_AT_Commands_Manual_V2.1.pdf
+[link-bg96-psm-an]: https://www.quectel.com/UploadImage/Downlad/Quectel_BG96_PSM_Application_Note_V1.0.pdf
 
-[hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png
+[hw-stack]: ./imgs/hw/wiot-shield-wm01-arduinomega2560_stack.png 
 [compile1]: ./imgs/arduino_guide_ide_compile.png
 [compile2]: ./imgs/arduino_guide_ide_compile_finish.png
 [serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
 
-[1]: ./imgs/Arduino_guide_wm-n400mse_psm_1.png
+[1]: ./imgs/arduino_guide_am01_psm-1.png
+[2]: ./imgs/arduino_guide_am01_psm-2.png
+[3]: ./imgs/arduino_guide_am01_psm-3.png
+
