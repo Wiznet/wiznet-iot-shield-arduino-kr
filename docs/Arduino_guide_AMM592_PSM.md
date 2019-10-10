@@ -273,7 +273,7 @@ int8_t getNetworkTimeLocal_AMM592(char * timestr);
 [compile2]: ./imgs/arduino_guide_ide_compile_finish.png
 [serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
 
-[1]: ./imgs/arduino_guide_am01_psm-1.png
-[2]: ./imgs/arduino_guide_am01_psm-2.png
-[3]: ./imgs/arduino_guide_am01_psm-3.png
+[1]: ./imgs/arduino_guide_am01-psm-1.png
+[2]: ./imgs/arduino_guide_am01-psm-2.png
+[3]: ./imgs/arduino_guide_am01-psm-3.png
 
