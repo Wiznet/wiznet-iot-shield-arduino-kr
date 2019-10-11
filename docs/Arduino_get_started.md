@@ -86,7 +86,7 @@ WIZnet IoT Shield와 Arduino Mega2560과 Uart 통신을 하기위해서는 아�
 
 | ArduinoMega2560 | TX3 (14)  | RX3 (15) |
 |:----:|:----:|:----:|
-| WIZnet IoT Shield | RXD<br>(UART Rx for D1/D8)  | TXD<br>(UART Tx for D0/D2) |
+| WIZnet IoT Shield | RXD<br>(UART Tx for D0/D2)  | TXD<br>(UART Rx for D1/D8 ) |
 
 > 보드 상단에 위치한 UART_SEL 점퍼를 제거한 후 (실크 기준) 오른쪽 핀을 Arduino 보드와 연결합니다.
 
