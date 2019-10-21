@@ -69,14 +69,14 @@ Arduino 플랫폼 보드 활용 시, 각 인터페이스 보드에 따른 하드
 
 #### Pin `D0` `D1`의 UART를 활용하는 경우
 
-| WIoT-QC01 Jumper settings<bR> | WIoT-WM01 Jumper settings | WIoT-AM01 Jumper settings |
+| WIoT-QC01/TL01 Jumper settings<bR> | WIoT-WM01 Jumper settings | WIoT-AM01 Jumper settings |
 |:--------------------------:|:--------------------------:|:--------------------------:|
 |![][hw-settings-arduino-qc01]|![][hw-settings-arduino-wm01]|![][hw-settings-arduino-am01]|
 
 
 #### Pin `D2` `D8`의 UART를 활용하는 경우
 
-| WIoT-QC01 Jumper settings<bR> | :heavy_check_mark: WIoT-WM01 Jumper settings | WIoT-AM01 Jumper settings |
+| WIoT-QC01/TL01 Jumper settings<bR> | :heavy_check_mark: WIoT-WM01 Jumper settings | WIoT-AM01 Jumper settings |
 |:--------------------------:|:--------------------------:|:--------------------------:|
 |![][hw-settings-nucleo-qc01]|![][hw-settings-nucleo-wm01]|![][hw-settings-nucleo-am01]|
 
