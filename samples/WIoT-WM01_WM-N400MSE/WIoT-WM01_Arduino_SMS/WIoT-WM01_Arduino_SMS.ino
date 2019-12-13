@@ -20,8 +20,8 @@
 #define BG96_PARSER_DEBUG                  DEBUG_DISABLE
 #define CATM1_DEVICE_DEBUG                 DEBUG_ENABLE
 
-char *phone_number = "01090373914";
-char *send_message = "48656C6C6F2057495A6E6574204361742E4D31";
+char *phone_number = "Insert Your Phone Numer";
+char *send_message = "Insert Your Message";
 String rxdata;
 
 ATCmdParser m_parser = ATCmdParser(&Serial3);
