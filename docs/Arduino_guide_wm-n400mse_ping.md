@@ -74,13 +74,13 @@ Cat.M1 모듈 및 외장형 모뎀은 UART 인터페이스를 통해 활용하�
 
 ### 3. 네트워크 접속 확인
 
-**AT Command:** AT$$CEREG
+**AT Command:** AT+CEREG
 
 **Syntax:**
 
 | Type | Syntax | Response | Example
 |:--------|:--------|:--------|:--------|
-| Read | AT$$CEREG? | $$STAT:(value),(status)<br><br>OK | AT+CEREG?<br>+CEREG:0,1<br><br>OK |
+| Read | AT+CEREG? | $$STAT:(value),(status)<br><br>OK | AT+CEREG?<br>+CEREG:0,1<br><br>OK |
 
 **Defined values:**
 
