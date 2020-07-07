@@ -296,12 +296,6 @@ AT+WSOCL=0
 OK
 +WSOCL:0,CLOSE_CMPL
 
-// PDP context 비활성화
-AT*RNDISDATA=0
-*RNDISDATA:0
-
-OK
-
 ```
 
 
