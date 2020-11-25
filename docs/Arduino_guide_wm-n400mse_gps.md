@@ -26,6 +26,7 @@
 | [Arduino Mega2560 Rev3][link-arduino Mega2560 Rev3] | WIoT-WM01 (WM-N400MSE) |
 
 > * 별도의 GNSS Antenna가 필요합니다.
+> * WM-N400MSE의 펌웨어 버전 S130xx.027 이후부터 GPS가 지원됩니다. ATI 혹은 AT$$SWVER 를 이용하여 펌웨어 버전을 확인 후, 이전 버전인 경우, 오픈하우스(openhouse@wiznet.io)에 문의하시기 바랍니다. 
 
 <a name="Step-1-Overview"></a>
 ## 소개
@@ -54,7 +55,9 @@ S/W Version S430XX.015 (2019년 12월 1일 이후 빌드 버전)의 경우 GPS �
 이전 버전의 경우에는 "1. GPS 기능 활성화" AT Command를 바로 사용하시면 됩니다. 
 
 **AT Command:** AT$$SWVER
+
 | Type | Syntax | Response | Example
+|:--------|:--------|:--------|:--------|
 | Read | AT$$SWVER | $$SWVER:<S/W Version>,<빌드 시간 정보> | AT$$SWVER<br>$$SWVER: Sxx0XXX.000, Dec 01 2017 15:15:15<br>OK |
 
 ### 0-1. S/W Version 이 430XX.015 (2019년 12월 1일 이후 빌드 버전) 인 경우 GPS 기능 출력 인터페이스 설정
