@@ -127,20 +127,8 @@ WIZnet IoT Shield를 Standalone 모드로 동작시켜, 터미널 프로그램�
 [compile2]: ./imgs/arduino_guide_ide_compile_finish.png
 [serialMonitor]: ./imgs/arduino_guide_ide_serialmonitor.png
 
-[1]: ./imgs/arduino_guide_bg96_tcp-1.png
-[2]: ./imgs/arduino_guide_wmn400_tcp-2.png
-[3]: ./imgs/arduino_guide_wmn400_tcp-3.png
-[4]: ./imgs/arduino_guide_wmn400_tcp-4.png
-[5]: ./imgs/arduino_guide_wmn400_tcp-5.png
+[1]: ./imgs/arduino_guide_wmn400-gps-1.png
 
-
-[import1]: ./imgs/mbed_guide_webide_import.png
-[import2]: ./imgs/mbed_guide_webide_import_repo.png
-[compile]: ./imgs/mbed_guide_webide_compile.png
-[1]: ./imgs/mbed_guide_wm-n400mse_gps-2.png
-[2]: ./imgs/mbed_guide_bg96_gps-2.png
-[3]: ./imgs/mbed_guide_bg96_gps-3.png
-[4]: ./imgs/mbed_guide_bg96_gps-4.png
 [gnss]: ./imgs/mbed_guide_bg96_gps-gnss.png
 
 
