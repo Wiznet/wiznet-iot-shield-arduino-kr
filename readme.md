@@ -64,7 +64,7 @@ Arduino IDE에서 컴파일 및 업로드 하여 보드의 동작을 확인 할 
 
 ## IoT 오픈 하우스
 
-[IoT 오픈 하우스](https://github.com/Wiznet/IoTOpenHouse/)를 방문하시거나 [SK텔레콤 IoT 서포트 신청](http://b2b.tworld.co.kr/cs/counsel/iotOpenHouse.bc/)을 하시면, LoRa, Cellular(Cat M1), WiFi, Ethernet 등을 활용한 IoT 개발에 대한 컨설팅과 상용화를 위한 지원을 무상으로 받으실 수 있습니다.
+[IoT 오픈 하우스](https://github.com/Wiznet/IoTOpenHouse/)를 방문하시거나 [SK텔레콤 IoT 서포트 신청](http://b2b.tworld.co.kr/cs/counsel/iotOpenHouse.bc)을 하시면, LoRa, Cellular(Cat M1), WiFi, Ethernet 등을 활용한 IoT 개발에 대한 컨설팅과 상용화를 위한 지원을 무상으로 받으실 수 있습니다.
 
 ## Support
 
